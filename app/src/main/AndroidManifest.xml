@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COSC341_Step4">
         <activity
+            android:name=".testActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
