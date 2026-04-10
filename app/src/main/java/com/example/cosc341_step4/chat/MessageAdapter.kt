@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.group18.petapp.R
+import com.example.cosc341_step4.R
 
 class MessageAdapter(
     private val messages: MutableList<Message>,
