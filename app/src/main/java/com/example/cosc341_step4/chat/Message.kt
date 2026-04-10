@@ -1,4 +1,4 @@
-package com.example.cosc341_step4
+package com.example.cosc341_step4.chat
 
 data class Message(
     val id: String = java.util.UUID.randomUUID().toString(),
@@ -6,7 +6,7 @@ data class Message(
     val senderName: String,
     val content: String = "",
     val type: MessageType = MessageType.TEXT,
-    val mediaUri: String? = null,       // for image/video/voice
+    val mediaUri: String? = null,
     val timestamp: Long = System.currentTimeMillis(),
     val isRead: Boolean = false
 )
