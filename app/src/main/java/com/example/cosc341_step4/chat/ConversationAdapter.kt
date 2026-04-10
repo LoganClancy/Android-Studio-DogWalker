@@ -1,4 +1,4 @@
-package com.group18.petapp.chat
+package com.example.cosc341_step4.chat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -30,30 +30,22 @@ class ConversationAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val conversation = conversations[position]
-
         holder.tvName.text = conversation.name
         holder.tvLastMessage.text = conversation.lastMessage
         holder.tvTime.text = conversation.lastMessageTime
-
-        // Show group icon badge for group chats
         holder.ivGroupIcon.visibility = if (conversation.isGroup) View.VISIBLE else View.GONE
-
-        // Show/hide unread badge
         if (conversation.unreadCount > 0) {
             holder.tvUnreadBadge.visibility = View.VISIBLE
-            holder.tvUnreadBadge.text = if (conversation.unreadCount > 99) "99+"
-            else conversation.unreadCount.toString()
+            holder.tvUnreadBadge.text =
+                if (conversation.unreadCount > 99) "99+" else conversation.unreadCount.toString()
         } else {
             holder.tvUnreadBadge.visibility = View.GONE
         }
-
-        // Highlight currently-logged-in user's row
         if (conversation.id == "self") {
             holder.itemView.setBackgroundResource(R.drawable.bg_self_highlight)
         } else {
             holder.itemView.setBackgroundResource(R.drawable.selector_conversation_item)
         }
-
         holder.itemView.setOnClickListener { onItemClick(conversation) }
     }
 

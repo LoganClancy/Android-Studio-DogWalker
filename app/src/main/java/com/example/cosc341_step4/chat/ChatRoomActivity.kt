@@ -21,9 +21,9 @@ import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cosc341_step4.R
-import com.group18.petapp.chat.Message
-import com.group18.petapp.chat.MessageAdapter
-import com.group18.petapp.chat.MessageType
+import com.example.cosc341_step4.chat.Message
+import com.example.cosc341_step4.MessageAdapter
+import com.example.cosc341_step4.chat.MessageType
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
