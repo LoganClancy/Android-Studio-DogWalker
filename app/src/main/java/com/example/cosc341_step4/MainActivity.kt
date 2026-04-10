@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.cosc341_step4.chat.ChatListActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
     }
     fun onClickMap(view: View) {
         val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onClickChat(view: View) {
+        val intent = Intent(this, ChatListActivity::class.java)
         startActivity(intent)
     }
 
