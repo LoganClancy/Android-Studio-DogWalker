@@ -2,6 +2,7 @@ package com.example.cosc341_step4.chat
 
 import android.media.MediaPlayer
 import android.net.Uri
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,13 +47,16 @@ class MessageAdapter(
         val isSent = message.senderId == currentUserId
 
         val params = holder.bubbleContainer.layoutParams as LinearLayout.LayoutParams
+        val parentLayout = holder.bubbleContainer.parent as LinearLayout
         if (isSent) {
             params.marginStart = 60
             params.marginEnd = 0
+            parentLayout.gravity = Gravity.END
             holder.bubbleContainer.setBackgroundResource(R.drawable.bg_bubble_sent)
         } else {
             params.marginStart = 0
             params.marginEnd = 60
+            parentLayout.gravity = Gravity.START
             holder.bubbleContainer.setBackgroundResource(R.drawable.bg_bubble_received)
         }
         holder.bubbleContainer.layoutParams = params
