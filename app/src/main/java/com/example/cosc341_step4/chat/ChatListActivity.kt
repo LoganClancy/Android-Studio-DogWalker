@@ -1,4 +1,4 @@
-package com.example.cosc341_step4
+package com.example.cosc341_step4.chat
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.group18.petapp.R
+import com.example.cosc341_step4.R
 
 class ChatListActivity : AppCompatActivity() {
 
