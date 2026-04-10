@@ -71,8 +71,8 @@
                     android:layout_height="32dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@android:drawable/ic_media_play"
-                    android:tint="#3D5A80"
-                    android:contentDescription="Play voice note" />
+                    android:contentDescription="Play voice note"
+                    app:tint="#3D5A80" />
 
                 <SeekBar
                     android:id="@+id/seekBarVoice"
