@@ -1,4 +1,4 @@
-package com.group18.petapp.chat
+package com.example.cosc341_step4
 
 data class Message(
     val id: String = java.util.UUID.randomUUID().toString(),
