@@ -20,8 +20,8 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_previous"
-            android:contentDescription="Back"
-            app:tint="#FFFFFF" />
+            app:tint="#FFFFFF"
+            android:contentDescription="Back" />
 
         <TextView
             android:id="@+id/tvChatTitle"
@@ -48,6 +48,7 @@
 
     <!-- Input Panel -->
     <LinearLayout
+        android:fitsSystemWindows="true"
         android:id="@+id/inputPanel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -74,8 +75,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_btn_speak_now"
-                android:contentDescription="Voice note"
-                app:tint="#3D5A80" />
+                app:tint="#3D5A80"
+                android:contentDescription="Voice note" />
 
             <!-- Camera / Take Photo Button -->
             <ImageButton
@@ -84,7 +85,7 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_camera"
-                android:tint="#3D5A80"
+                app:tint="#3D5A80"
                 android:contentDescription="Take photo" />
 
             <!-- Gallery / Send Image Button -->
@@ -94,7 +95,7 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_gallery"
-                android:tint="#3D5A80"
+                app:tint="#3D5A80"
                 android:contentDescription="Send image" />
 
             <!-- Expand/More options -->
@@ -104,8 +105,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_add"
-                android:contentDescription="More"
-                app:tint="#3D5A80" />
+                app:tint="#3D5A80"
+                android:contentDescription="More" />
 
         </LinearLayout>
 
@@ -158,7 +159,7 @@
         android:padding="12dp"
         android:gravity="center_vertical"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/inputPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 

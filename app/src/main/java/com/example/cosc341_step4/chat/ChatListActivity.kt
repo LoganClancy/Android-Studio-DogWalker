@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cosc341_step4.ChatRoomActivity
 import com.example.cosc341_step4.R
 
-import com.group18.petapp.chat.Conversation
-import com.group18.petapp.chat.ConversationAdapter
+import com.example.cosc341_step4.Conversation
+import com.example.cosc341_step4.chat.ConversationAdapter
 
 class ChatListActivity : AppCompatActivity() {
 
