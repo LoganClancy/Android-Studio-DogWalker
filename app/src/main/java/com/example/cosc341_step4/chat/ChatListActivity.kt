@@ -2,7 +2,6 @@ package com.example.cosc341_step4.chat
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,6 @@ class ChatListActivity : AppCompatActivity() {
     private lateinit var searchView: SearchView
     private lateinit var adapter: ConversationAdapter
 
-    // Sample data — replace with Firebase/backend data
     private val allConversations = mutableListOf(
         Conversation(
             id = "conv_harrison",
@@ -44,32 +42,27 @@ class ChatListActivity : AppCompatActivity() {
             id = "conv_tanay",
             name = "Tanay Desai",
             lastMessage = "",
-            lastMessageTime = "",
-            unreadCount = 0
+            lastMessageTime = ""
         ),
         Conversation(
             id = "conv_tom",
             name = "Tom Huang",
             lastMessage = "",
-            lastMessageTime = "",
-            unreadCount = 0
+            lastMessageTime = ""
         )
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_list)
-
         rvConversations = findViewById(R.id.rvConversations)
         searchView = findViewById(R.id.searchView)
-
         setupRecyclerView()
         setupSearch()
     }
 
     private fun setupRecyclerView() {
         adapter = ConversationAdapter(allConversations.toMutableList()) { conversation ->
-            // Open chat room
             val intent = Intent(this, ChatRoomActivity::class.java).apply {
                 putExtra(ChatRoomActivity.EXTRA_CONVERSATION_ID, conversation.id)
                 putExtra(ChatRoomActivity.EXTRA_CONVERSATION_NAME, conversation.name)
@@ -77,7 +70,6 @@ class ChatListActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-
         rvConversations.layoutManager = LinearLayoutManager(this)
         rvConversations.adapter = adapter
     }
@@ -85,7 +77,6 @@ class ChatListActivity : AppCompatActivity() {
     private fun setupSearch() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?) = false
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 val filtered = if (newText.isNullOrBlank()) {
                     allConversations.toMutableList()
