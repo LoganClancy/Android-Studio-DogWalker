@@ -1,4 +1,4 @@
-package com.example.cosc341_step4
+package com.group18.petapp.chat
 
 import android.Manifest
 import android.app.Activity

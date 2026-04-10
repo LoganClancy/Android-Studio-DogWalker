@@ -1,4 +1,4 @@
-package com.example.cosc341_step4
+package com.group18.petapp.chat
 
 data class Conversation(
     val id: String,
