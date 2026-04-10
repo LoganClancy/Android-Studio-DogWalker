@@ -58,9 +58,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     private void addMark(LatLng location) {
-
+        String name;
         EditText input = new EditText(this);
-
         new AlertDialog.Builder(this)
                 .setTitle("Marker Title")
                 .setMessage("Enter a name for this marker:")
@@ -76,6 +75,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.addMarker(new MarkerOptions()
                             .position(location)
                             .title(title)
+                    );
+
+                    NotificationDB.add(
+                            new NotificationEntry("New map marker added!", "Name: " + title + "\n" + location.toString(), R.drawable.map_pin)
                     );
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
