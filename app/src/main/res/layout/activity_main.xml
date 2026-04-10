@@ -66,4 +66,17 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="65dp"
+        android:backgroundTint="#4CAE50"
+        android:onClick="onClickNotif"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bell" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
