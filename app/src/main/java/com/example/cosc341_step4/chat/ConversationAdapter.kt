@@ -1,4 +1,4 @@
-package com.group18.petapp.chat
+package com.example.cosc341_step4.chat
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.group18.petapp.R
+import com.example.cosc341_step4.R
 
 class ConversationAdapter(
     private val conversations: MutableList<Conversation>,
