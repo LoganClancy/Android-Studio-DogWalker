@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cosc341_step4.R
 
@@ -33,10 +32,8 @@ class MessageAdapter(
         val tvTimestamp: TextView = itemView.findViewById(R.id.tvTimestamp)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (messages[position].senderId == currentUserId) VIEW_TYPE_SENT
-        else VIEW_TYPE_RECEIVED
-    }
+    override fun getItemViewType(position: Int): Int =
+        if (messages[position].senderId == currentUserId) VIEW_TYPE_SENT else VIEW_TYPE_RECEIVED
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -48,7 +45,6 @@ class MessageAdapter(
         val message = messages[position]
         val isSent = message.senderId == currentUserId
 
-        // Align bubble: sent = right, received = left
         val params = holder.bubbleContainer.layoutParams as LinearLayout.LayoutParams
         if (isSent) {
             params.marginStart = 60
@@ -61,7 +57,6 @@ class MessageAdapter(
         }
         holder.bubbleContainer.layoutParams = params
 
-        // Show sender name in group chats for received messages
         if (isGroupChat && !isSent) {
             holder.tvSenderName.visibility = View.VISIBLE
             holder.tvSenderName.text = message.senderName
@@ -69,12 +64,10 @@ class MessageAdapter(
             holder.tvSenderName.visibility = View.GONE
         }
 
-        // Hide all content views first
         holder.tvMessageText.visibility = View.GONE
         holder.ivMessageImage.visibility = View.GONE
         holder.voiceNoteContainer.visibility = View.GONE
 
-        // Show appropriate content based on message type
         when (message.type) {
             MessageType.TEXT -> {
                 holder.tvMessageText.visibility = View.VISIBLE
@@ -82,23 +75,18 @@ class MessageAdapter(
             }
             MessageType.IMAGE -> {
                 holder.ivMessageImage.visibility = View.VISIBLE
-                message.mediaUri?.let { uri ->
-                    holder.ivMessageImage.setImageURI(Uri.parse(uri))
-                }
+                message.mediaUri?.let { holder.ivMessageImage.setImageURI(Uri.parse(it)) }
             }
             MessageType.VOICE -> {
                 holder.voiceNoteContainer.visibility = View.VISIBLE
                 setupVoicePlayer(holder, message)
             }
             MessageType.VIDEO -> {
-                // Show thumbnail for video; full video playback can be added later
                 holder.ivMessageImage.visibility = View.VISIBLE
                 holder.tvMessageText.visibility = View.VISIBLE
                 holder.tvMessageText.text = "🎥 Video"
             }
         }
-
-        // Format timestamp
         holder.tvTimestamp.text = formatTimestamp(message.timestamp)
     }
 

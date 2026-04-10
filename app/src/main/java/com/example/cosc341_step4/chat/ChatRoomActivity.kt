@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
@@ -22,8 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cosc341_step4.R
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ChatRoomActivity : AppCompatActivity() {
 
@@ -31,13 +28,11 @@ class ChatRoomActivity : AppCompatActivity() {
         const val EXTRA_CONVERSATION_ID = "conversation_id"
         const val EXTRA_CONVERSATION_NAME = "conversation_name"
         const val EXTRA_IS_GROUP = "is_group"
-
         private const val REQUEST_CAMERA = 101
         private const val REQUEST_GALLERY = 102
         private const val REQUEST_PERMISSIONS = 103
     }
 
-    // Current logged-in user ID — replace with actual auth user ID
     private val currentUserId = "user_dominic"
     private val currentUserName = "Dominic J"
 
@@ -58,7 +53,6 @@ class ChatRoomActivity : AppCompatActivity() {
     private var recordingSeconds = 0
     private val timerHandler = Handler(Looper.getMainLooper())
     private var timerRunnable: Runnable? = null
-
     private var photoUri: Uri? = null
     private var conversationId: String = ""
     private var conversationName: String = ""
@@ -67,11 +61,9 @@ class ChatRoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_room)
-
         conversationId = intent.getStringExtra(EXTRA_CONVERSATION_ID) ?: ""
         conversationName = intent.getStringExtra(EXTRA_CONVERSATION_NAME) ?: "Chat"
         isGroupChat = intent.getBooleanExtra(EXTRA_IS_GROUP, false)
-
         initViews()
         setupToolbar()
         setupRecyclerView()
@@ -102,20 +94,12 @@ class ChatRoomActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        messageAdapter = MessageAdapter(
-            mutableListOf(),
-            currentUserId,
-            isGroupChat
-        )
-        rvMessages.layoutManager = LinearLayoutManager(this).apply {
-            stackFromEnd = true
-        }
+        messageAdapter = MessageAdapter(mutableListOf(), currentUserId, isGroupChat)
+        rvMessages.layoutManager = LinearLayoutManager(this).apply { stackFromEnd = true }
         rvMessages.adapter = messageAdapter
     }
 
     private fun loadMessages() {
-        // TODO: Replace with Firebase/backend fetch
-        // Sample messages to demonstrate the UI
         val sampleMessages = mutableListOf(
             Message(
                 senderId = "user_harrison",
@@ -135,7 +119,6 @@ class ChatRoomActivity : AppCompatActivity() {
         messageAdapter.setMessages(sampleMessages)
     }
 
-    // ─── Text Sending ───────────────────────────────────────────────────────
     private fun setupSendButton() {
         btnSend.setOnClickListener {
             val text = etMessage.text.toString().trim()
@@ -151,7 +134,6 @@ class ChatRoomActivity : AppCompatActivity() {
         }
     }
 
-    // ─── Voice Note ─────────────────────────────────────────────────────────
     private fun setupVoiceButton() {
         btnVoiceNote.setOnClickListener {
             if (!isRecording) startRecording() else stopRecordingAndSend()
@@ -159,10 +141,7 @@ class ChatRoomActivity : AppCompatActivity() {
     }
 
     private fun startRecording() {
-        if (!hasAudioPermission()) {
-            requestRequiredPermissions()
-            return
-        }
+        if (!hasAudioPermission()) { requestRequiredPermissions(); return }
         voiceFilePath = "${externalCacheDir?.absolutePath}/voice_${System.currentTimeMillis()}.m4a"
         mediaRecorder = MediaRecorder().apply {
             setAudioSource(MediaRecorder.AudioSource.MIC)
@@ -175,7 +154,6 @@ class ChatRoomActivity : AppCompatActivity() {
         isRecording = true
         recordingSeconds = 0
         voiceRecordingOverlay.visibility = View.VISIBLE
-
         timerRunnable = object : Runnable {
             override fun run() {
                 recordingSeconds++
@@ -190,25 +168,21 @@ class ChatRoomActivity : AppCompatActivity() {
 
     private fun stopRecordingAndSend() {
         timerRunnable?.let { timerHandler.removeCallbacks(it) }
-        try {
-            mediaRecorder?.apply { stop(); release() }
-        } catch (e: Exception) { e.printStackTrace() }
+        try { mediaRecorder?.apply { stop(); release() } } catch (e: Exception) { e.printStackTrace() }
         mediaRecorder = null
         isRecording = false
         voiceRecordingOverlay.visibility = View.GONE
-
-        voiceFilePath?.let { path ->
+        voiceFilePath?.let {
             sendMessage(Message(
                 senderId = currentUserId,
                 senderName = currentUserName,
                 type = MessageType.VOICE,
-                mediaUri = path,
+                mediaUri = it,
                 content = "Voice message"
             ))
         }
     }
 
-    // ─── Camera (Take Photo) ────────────────────────────────────────────────
     private fun setupCameraButton() {
         btnCamera.setOnClickListener {
             if (!hasCameraPermission()) { requestRequiredPermissions(); return@setOnClickListener }
@@ -216,9 +190,7 @@ class ChatRoomActivity : AppCompatActivity() {
                 "photo_${System.currentTimeMillis()}", ".jpg",
                 getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             )
-            photoUri = FileProvider.getUriForFile(
-                this, "${packageName}.fileprovider", photoFile
-            )
+            photoUri = FileProvider.getUriForFile(this, "${packageName}.fileprovider", photoFile)
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE).apply {
                 putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
             }
@@ -226,7 +198,6 @@ class ChatRoomActivity : AppCompatActivity() {
         }
     }
 
-    // ─── Gallery (Send Existing Image) ──────────────────────────────────────
     private fun setupGalleryButton() {
         btnGallery.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -237,42 +208,33 @@ class ChatRoomActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK) return
-
         when (requestCode) {
-            REQUEST_CAMERA -> {
-                photoUri?.let { uri ->
-                    sendMessage(Message(
-                        senderId = currentUserId,
-                        senderName = currentUserName,
-                        type = MessageType.IMAGE,
-                        mediaUri = uri.toString(),
-                        content = "Photo"
-                    ))
-                }
+            REQUEST_CAMERA -> photoUri?.let {
+                sendMessage(Message(
+                    senderId = currentUserId,
+                    senderName = currentUserName,
+                    type = MessageType.IMAGE,
+                    mediaUri = it.toString(),
+                    content = "Photo"
+                ))
             }
-            REQUEST_GALLERY -> {
-                data?.data?.let { uri ->
-                    sendMessage(Message(
-                        senderId = currentUserId,
-                        senderName = currentUserName,
-                        type = MessageType.IMAGE,
-                        mediaUri = uri.toString(),
-                        content = "Image"
-                    ))
-                }
+            REQUEST_GALLERY -> data?.data?.let {
+                sendMessage(Message(
+                    senderId = currentUserId,
+                    senderName = currentUserName,
+                    type = MessageType.IMAGE,
+                    mediaUri = it.toString(),
+                    content = "Image"
+                ))
             }
         }
     }
 
-    // ─── Send Message ────────────────────────────────────────────────────────
     private fun sendMessage(message: Message) {
         messageAdapter.addMessage(message)
         rvMessages.scrollToPosition(messageAdapter.itemCount - 1)
-        // TODO: Save to Firebase / backend here
-        // FirebaseRepository.sendMessage(conversationId, message)
     }
 
-    // ─── Permissions ─────────────────────────────────────────────────────────
     private fun requestRequiredPermissions() {
         val permissions = arrayOf(
             Manifest.permission.RECORD_AUDIO,
