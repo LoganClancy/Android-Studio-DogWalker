@@ -2,10 +2,13 @@ package com.example.cosc341_step4.chat
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cosc341_step4.MainActivity
+import com.example.cosc341_step4.MapsActivity
 import com.example.cosc341_step4.R
 
 class ChatListActivity : AppCompatActivity() {
@@ -91,4 +94,13 @@ class ChatListActivity : AppCompatActivity() {
             }
         })
     }
+
+
+    fun onClickHome(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+
+
 }
