@@ -3,6 +3,7 @@ package com.example.cosc341_step4
 import com.example.cosc341_step4.MapsActivity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,8 +21,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
+
+
+    }
+    fun onClickMap(view: View) {
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
-        finish()
     }
+
+
+
+
 }
