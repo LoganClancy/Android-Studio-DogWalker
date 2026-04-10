@@ -20,8 +20,8 @@
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@android:drawable/ic_media_previous"
-            android:tint="#FFFFFF"
-            android:contentDescription="Back" />
+            android:contentDescription="Back"
+            app:tint="#FFFFFF" />
 
         <TextView
             android:id="@+id/tvChatTitle"
@@ -74,8 +74,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_btn_speak_now"
-                android:tint="#3D5A80"
-                android:contentDescription="Voice note" />
+                android:contentDescription="Voice note"
+                app:tint="#3D5A80" />
 
             <!-- Camera / Take Photo Button -->
             <ImageButton
@@ -104,8 +104,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@android:drawable/ic_menu_add"
-                android:tint="#3D5A80"
-                android:contentDescription="More" />
+                android:contentDescription="More"
+                app:tint="#3D5A80" />
 
         </LinearLayout>
 

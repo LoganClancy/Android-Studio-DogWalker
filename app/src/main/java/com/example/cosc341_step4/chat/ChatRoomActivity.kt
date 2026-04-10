@@ -1,4 +1,4 @@
-package com.group18.petapp.chat
+package com.example.cosc341_step4
 
 import android.Manifest
 import android.app.Activity
@@ -20,7 +20,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.group18.petapp.R
+import com.example.cosc341_step4.R
+import com.group18.petapp.chat.Message
+import com.group18.petapp.chat.MessageAdapter
+import com.group18.petapp.chat.MessageType
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*

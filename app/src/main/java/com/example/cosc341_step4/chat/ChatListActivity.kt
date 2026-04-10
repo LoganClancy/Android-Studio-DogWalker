@@ -1,13 +1,16 @@
-package com.group18.petapp.chat
+package com.example.cosc341_step4.chat
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.group18.petapp.R
+import com.example.cosc341_step4.ChatRoomActivity
+import com.example.cosc341_step4.R
+
+import com.group18.petapp.chat.Conversation
+import com.group18.petapp.chat.ConversationAdapter
 
 class ChatListActivity : AppCompatActivity() {
 
@@ -38,7 +41,13 @@ class ChatListActivity : AppCompatActivity() {
             lastMessageTime = "3:00",
             unreadCount = 8,
             isGroup = true,
-            members = listOf("Harrison Kayihura", "Logan Clancy", "Tanay Desai", "Tom Huang", "Dominic J")
+            members = listOf(
+                "Harrison Kayihura",
+                "Logan Clancy",
+                "Tanay Desai",
+                "Tom Huang",
+                "Dominic J"
+            )
         ),
         Conversation(
             id = "conv_tanay",
@@ -71,9 +80,9 @@ class ChatListActivity : AppCompatActivity() {
         adapter = ConversationAdapter(allConversations.toMutableList()) { conversation ->
             // Open chat room
             val intent = Intent(this, ChatRoomActivity::class.java).apply {
-                putExtra(ChatRoomActivity.EXTRA_CONVERSATION_ID, conversation.id)
-                putExtra(ChatRoomActivity.EXTRA_CONVERSATION_NAME, conversation.name)
-                putExtra(ChatRoomActivity.EXTRA_IS_GROUP, conversation.isGroup)
+                putExtra(ChatRoomActivity.Companion.EXTRA_CONVERSATION_ID, conversation.id)
+                putExtra(ChatRoomActivity.Companion.EXTRA_CONVERSATION_NAME, conversation.name)
+                putExtra(ChatRoomActivity.Companion.EXTRA_IS_GROUP, conversation.isGroup)
             }
             startActivity(intent)
         }

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
-        <shape><solid android:color="#E8EEF5" /></shape>
-    </it
-cat > selector_conversation_item.xml << 'EOF'
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape><solid android:color="#E8EEF5" /></shape>
+        <color android:color="#E0E0E0" />
+    </item>
+    <item android:state_selected="true">
+        <color android:color="#E0E0E0" />
     </item>
     <item>
-        <shape><solid android:color="#FFFFFF" /></shape>
+        <color android:color="@android:color/transparent" />
     </item>
 </selector>
