@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.cosc341_step4.notifications.NotificationDB;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
@@ -46,6 +48,7 @@ public class MakeNewWalkFragment extends Fragment {
                 etOccupancy.setText("");
                 etTags.setText("");
                 switchRsvp.setChecked(false);
+                NotificationDB.addWalkCreatedNotif(name, startLocation);
             }
         });
 

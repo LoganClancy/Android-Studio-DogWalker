@@ -1,4 +1,4 @@
-package com.example.cosc341_step4;
+package com.example.cosc341_step4.notifications;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

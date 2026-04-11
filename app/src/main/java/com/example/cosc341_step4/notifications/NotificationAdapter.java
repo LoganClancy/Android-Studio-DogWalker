@@ -1,4 +1,4 @@
-package com.example.cosc341_step4;
+package com.example.cosc341_step4.notifications;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,16 +6,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.cosc341_step4.R;
+
 import java.util.List;
-import java.util.Locale;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
