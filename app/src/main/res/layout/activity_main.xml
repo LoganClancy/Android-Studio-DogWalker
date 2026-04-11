@@ -33,8 +33,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Home"
             android:backgroundTint="#4CAF50"
+            android:text="Settings"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -42,8 +42,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Events"
             android:backgroundTint="#4CAF50"
+            android:onClick="onClickEvent"
+            android:text="Events"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -51,8 +52,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="People"
             android:backgroundTint="#4CAF50"
+            android:onClick="onClickChat"
+            android:text="Chat"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -60,8 +62,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Map"
             android:backgroundTint="#4CAF50"
+            android:onClick="onClickMap"
+            android:text="Map"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
@@ -70,13 +73,12 @@
         android:id="@+id/imageButton2"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
         android:backgroundTint="#4CAE50"
-        android:onClick="onClickNotif"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bell" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

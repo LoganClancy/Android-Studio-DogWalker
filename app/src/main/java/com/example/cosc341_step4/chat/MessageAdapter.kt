@@ -2,6 +2,8 @@ package com.example.cosc341_step4.chat
 
 import android.media.MediaPlayer
 import android.net.Uri
+import com.example.cosc341_step4.chat.Message
+import com.example.cosc341_step4.chat.MessageType
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View

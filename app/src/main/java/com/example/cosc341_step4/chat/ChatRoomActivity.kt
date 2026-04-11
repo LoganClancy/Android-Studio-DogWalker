@@ -1,10 +1,8 @@
-package com.example.cosc341_step4
+package com.example.cosc341_step4.chat
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
 import android.os.Bundle
@@ -22,10 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cosc341_step4.R
 import com.example.cosc341_step4.chat.Message
-import com.example.cosc341_step4.MessageAdapter
 import com.example.cosc341_step4.chat.MessageType
 import java.io.File
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ChatRoomActivity : AppCompatActivity() {
@@ -239,7 +235,7 @@ class ChatRoomActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode != Activity.RESULT_OK) return
+        if (resultCode != RESULT_OK) return
 
         when (requestCode) {
             REQUEST_CAMERA -> {

@@ -1,6 +1,5 @@
 package com.example.cosc341_step4
 
-import com.example.cosc341_step4.MapsActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,7 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-//import com.example.cosc341_step4.chat.ChatListActivity
+import androidx.fragment.app.Fragment
+import com.example.cosc341_step4.chat.ChatListActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,14 +31,25 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    fun onClickChat(view: View) {
-//        val intent = Intent(this, ChatListActivity::class.java)
-//        startActivity(intent)
-//    }
-
-    fun onClickNotif(view: View){
-        val intent = Intent(this, NotificationCenter::class.java)
+    fun onClickChat(view: View) {
+        val intent = Intent(this, ChatListActivity::class.java)
         startActivity(intent)
     }
+    fun onClickEvent(view: View) {
+        val intent = Intent(this, ChatListActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    fun loadFragment(fragment: Fragment) {
+        getSupportFragmentManager()
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
+
 
 }
