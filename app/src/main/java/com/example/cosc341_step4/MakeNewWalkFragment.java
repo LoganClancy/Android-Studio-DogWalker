@@ -40,7 +40,7 @@ public class MakeNewWalkFragment extends Fragment {
                 Toast.makeText(getContext(), "Please fill in walk name and start location", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Walk created successfully!", Toast.LENGTH_SHORT).show();
-                // Clear fields
+                // Cuts Fields
                 etWalkName.setText("");
                 etWalkDetails.setText("");
                 etStartLocation.setText("");
