@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.cosc341_step4.chat.ChatListActivity
+import com.example.cosc341_step4.notifications.NotificationCenter
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,5 +50,12 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+
+
+    fun onClickNotif(view: View) {
+        val intent = Intent(this, NotificationCenter::class.java)
+        startActivity(intent)
     }
 }

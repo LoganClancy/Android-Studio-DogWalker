@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.cosc341_step4.notifications.NotificationDB;
+import com.example.cosc341_step4.notifications.NotificationEntry;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -77,9 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .title(title)
                     );
 
-                    NotificationDB.add(
-                            new NotificationEntry("New map marker added!", "Name: " + title + "\n" + location.toString(), R.drawable.map_pin)
-                    );
+                    NotificationDB.addMapNotif(title, location.toString());
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
                 .show();
