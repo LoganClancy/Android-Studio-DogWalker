@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Load your Pet Meetup page when app starts
+        //Loads app instantly
         if (savedInstanceState == null) {
             loadFragment(EventWalkProfileFragment())
         }
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickEvent(view: View) {
-        // FIXED: Now opens Events page instead of Chat
+
         loadFragment(JoinEventsFragment())
     }
 

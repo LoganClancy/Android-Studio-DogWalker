@@ -9,7 +9,7 @@
     android:padding="4dp">
 
     <!-- This layout is reused for both sent/received via ViewType in adapter -->
-    <!-- Sender name (shown in group chats for received messages) -->
+    <!-- Sender name -->
     <TextView
         android:id="@+id/tvSenderName"
         android:layout_width="wrap_content"
