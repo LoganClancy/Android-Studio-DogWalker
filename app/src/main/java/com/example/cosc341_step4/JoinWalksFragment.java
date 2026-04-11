@@ -24,13 +24,9 @@ public class JoinWalksFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_join_walks, container, false);
 
-        // Inside onCreateView, add this button
-        Button btnRefresh = view.findViewById(R.id.btn_refresh);
 
-        btnRefresh.setOnClickListener(v -> {
-            // Reload the same fragment (refreshes the page)
-            ((MainActivity) requireActivity()).loadFragment(new EventWalkProfileFragment());
-        });
+
+
 
         recyclerView = view.findViewById(R.id.recycler_view_walks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

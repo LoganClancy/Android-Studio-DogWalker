@@ -1,16 +1,16 @@
 package com.example.cosc341_step4.chat
 
+import android.R.id.message
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Telephony
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cosc341_step4.ChatRoomActivity
+import com.example.cosc341_step4.chat.ChatRoomActivity
 import com.example.cosc341_step4.R
 
-import com.example.cosc341_step4.Conversation
-import com.example.cosc341_step4.chat.ConversationAdapter
 
 class ChatListActivity : AppCompatActivity() {
 
