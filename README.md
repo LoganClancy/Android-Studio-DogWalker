@@ -9,5 +9,4 @@ Dominic Jia 41333949
 Logan Clancy 98795826
 Tom Huang 88781638	
 
-When compleated git clone the workspace and open in android studio,
-Connect your phone via cable and run the code to install the program on your device. Make sure  your device is in developer mode for propper install.
+
