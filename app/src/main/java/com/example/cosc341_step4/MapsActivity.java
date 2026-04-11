@@ -90,17 +90,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Kelowna locations
-        LatLng ubco = new LatLng(49.9406, -119.3950);
-        LatLng downtown = new LatLng(49.8880, -119.4960);
-        LatLng mission = new LatLng(49.8350, -119.4650);
+        LatLng Llams_Hangout = new LatLng(49.9056, -119.4727);
+        LatLng Cat_Meetup_at_Centeral_Park = new LatLng(49.8883, -119.4964);
+        LatLng Tuesday_Pet_Group = new LatLng(49.8920, -119.4350);
+        LatLng RutlandPet_Picnic = new LatLng(49.8956, -119.3902);
+        LatLng Cat_Cafe_Kelowna = new LatLng(49.8860, -119.4960);
+        LatLng Kelowna_Shelter_Meet = new LatLng(49.8889, -119.4463);
 
         // Add markers
-        mMap.addMarker(new MarkerOptions().position(ubco).title("UBCO"));
-        mMap.addMarker(new MarkerOptions().position(downtown).title("Downtown Kelowna"));
-        mMap.addMarker(new MarkerOptions().position(mission).title("Lower Mission"));
+        mMap.addMarker(new MarkerOptions().position(Llams_Hangout).title("Llams hangout"));
+        mMap.addMarker(new MarkerOptions().position(Cat_Meetup_at_Centeral_Park).title("Cat meetup at Centeral_Park"));
+        mMap.addMarker(new MarkerOptions().position(Tuesday_Pet_Group).title("Tuesday Pet Group"));
+        mMap.addMarker(new MarkerOptions().position(RutlandPet_Picnic).title("RutlandPet Picnic"));
+        mMap.addMarker(new MarkerOptions().position(Cat_Cafe_Kelowna).title("Cat Cafe Kelowna"));
+        mMap.addMarker(new MarkerOptions().position(Kelowna_Shelter_Meet).title("Kelowna Shelter Meet"));
 
         // Move camera to Kelowna (zoom level 12 is nice for city view)
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubco, 12));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Cat_Meetup_at_Centeral_Park, 12));
 
         mMap.setOnMapClickListener(latLng -> {
             if (isAddMarkerMode) {
