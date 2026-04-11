@@ -50,4 +50,11 @@
         android:text="My Activities"
         style="@style/Widget.Material3.Button.OutlinedButton" />
 
+    <Button
+        android:id="@+id/btn_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh"
+        android:layout_marginBottom="10dp" />
+
 </LinearLayout>
