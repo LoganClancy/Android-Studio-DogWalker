@@ -22,10 +22,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
-
-
+        // Load your Pet Meetup page when app starts
+        if (savedInstanceState == null) {
+            loadFragment(EventWalkProfileFragment())
+        }
     }
+
     fun onClickMap(view: View) {
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
@@ -35,21 +37,17 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, ChatListActivity::class.java)
         startActivity(intent)
     }
+
     fun onClickEvent(view: View) {
-        val intent = Intent(this, ChatListActivity::class.java)
-        startActivity(intent)
+        // FIXED: Now opens Events page instead of Chat
+        loadFragment(JoinEventsFragment())
     }
 
-
     fun loadFragment(fragment: Fragment) {
-        getSupportFragmentManager()
+        supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
     }
-
-
-
-
 }
