@@ -36,10 +36,6 @@ public class NotificationCenter extends AppCompatActivity {
         rv.setAdapter(adapter);
     }
 
-    public void startDeletion(){
-
-    }
-
     public void test(View view){
         adapter.addNotif("bruh", "moment");
     }

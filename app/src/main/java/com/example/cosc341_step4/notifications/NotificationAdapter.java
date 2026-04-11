@@ -43,7 +43,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public void addNotif(String title, String msg){
-        addNotif(title, msg, R.drawable.bg_unread_badge);
+        addNotif(title, msg, R.drawable.mayling_sob);
     }
 
     public void removeNotif(int i){
